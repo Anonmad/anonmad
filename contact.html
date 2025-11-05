@@ -583,44 +583,71 @@
             </div>
             
             <div class="contact-form">
-                <h3>Send Us a Message</h3>
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-control">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <select id="subject" name="subject" class="form-control" required>
-                            <option value="" disabled selected>Select a subject</option>
-                            <option value="inquiry">General Inquiry</option>
-                            <option value="quote">Request a Quote</option>
-                            <option value="support">Technical Support</option>
-                            <option value="partnership">Partnership Opportunity</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Your Message</label>
-                        <textarea id="message" name="message" class="form-control" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
+    <h3>Send Us a Message</h3>
+    <form action="https://formspree.io/f/mnnoedlb" method="POST">
+        <!-- Name -->
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Anon Mad" required>
         </div>
+        
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="_replyto" class="form-control" placeholder="you@example.com" required>
+        </div>
+        
+        <!-- Phone (optional) -->
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+255 7XX XXX XXX">
+        </div>
+        
+        <!-- Subject -->
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject" name="subject" class="form-control" required>
+                <option value="" disabled selected>Select a subject</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Request a Quote">Request a Quote</option>
+                <option value="Technical Support">Technical Support</option>
+                <option value="Partnership Opportunity">Partnership Opportunity</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        
+        <!-- Message -->
+        <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" class="form-control" placeholder="Write your message here..." rows="6" required></textarea>
+        </div>
+        
+        <!-- Submit Button -->
+        <button type="submit" class="btn">Send Message</button>
+    </form>
+</div>
+    <script>
+        const form = document.querySelector('.contact-form form');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if(response.ok){
+      alert('Thank you! Your message has been sent.');
+      form.reset();
+    } else {
+      alert('Oops! There was a problem submitting your form.');
+    }
+  }).catch(error => {
+    alert('Oops! There was a problem submitting your form.');
+  });
+});    
+    </script>
         
         <div class="map-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3369.7885786164043!2d29.636908970617398!3d-4.869294339199023!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19bf1b7cbec05337%3A0xcbcd99b3183f7bb4!2sMlole!5e1!3m2!1sen!2stz!4v1760631108129!5m2!1sen!2stz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -629,9 +656,10 @@
         <div class="team-cta">
             <h3>Want to Join Our Team?</h3>
             <p><b>We're always looking for talented individuals</b> to join our
-            growing team. Check out our careers page for current
-            openings or send us your resume.</p>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn">View Job Openings</a>
+            growing team.</p>
+            
+            <p>Join our tech community on <strong>Telegram</strong> and <strong>WhatsApp</strong> to stay <b>updated</b> with the latest projects and opportunities.</p>
+            <a href="https://anonmad.github.io/bongo.porto/" target="_blank" rel="noopener noreferrer" class="btn">Join Us</a>
         </div>
     </section>
     
