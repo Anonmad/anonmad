@@ -12,6 +12,38 @@
 
     <!-- Font Awesome Icons -->
       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+      
+    <style>
+  /* Kama unataka spinner na logo pamoja */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-top: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+  </style>
 </head>
 <body>
    <header>
@@ -82,6 +114,12 @@
     </video>
     </div>
   </header>
+  
+  <div id="loading-screen">
+    <img src="img/beats-electronics-logo.png" alt="Logo" style="width: 100px; height: auto;">
+    <div class="loading-spinner"></div>
+  </div>
+ 
   <!-- About Me Section -->
 <section class="about-section">
   <video class="about-video-bg" autoplay muted loop playsinline>
@@ -682,5 +720,14 @@
 <!-- FontAwesome CDN -->
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+    
+  <script>
+  // Weka hii mwisho kabisa kabisa ya <body> au kwenye <script> tag
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        document.getElementById('loading-screen').style.display = 'none';
+    }, 10000); // 10 second - badilisha muda ukitaka
+});
+  </script>
 </body>
 </html>
